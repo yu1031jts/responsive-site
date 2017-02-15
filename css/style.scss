@@ -1,0 +1,184 @@
+@import "compass";
+@import url(https://fonts.googleapis.com/css?family=Abel);
+// font-family
+$baseFontFamily :"游ゴシック", YuGothic, "メイリオ",Verdana, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+
+// colors
+$baseColor: #e0e0e0;
+$baseColor2: #dfd2bd;
+$subColor: #8dafbb;
+$keyColor: #3d6a72;
+$fontColor: #030303;
+
+
+
+/* Base
+------------------------------------------------------------*/
+html{ font-size: 62.5%; }
+
+body{
+  color: $fontColor;
+  font-size: 1.4rem;
+  font-family:$baseFontFamily;
+  line-height:1.6;
+  letter-spacing: 0.1em; 
+  background-color: $baseColor;
+}
+
+a {
+  @include link-colors($fontColor, darken($fontColor, 10%), lighten($fontColor, 5%), darken($fontColor, 10%));
+  text-decoration: none;
+}
+
+/* Align
+------------------------------------------------------------*/
+.text-center {
+  text-align: center;
+}
+
+/* Layout
+------------------------------------------------------------*/
+.block-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Font
+------------------------------------------------------------*/
+.abel {
+  font-family: 'Abel', sans-serif;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+
+
+
+/* Header
+------------------------------------------------------------*/
+header {
+  .header-picture {
+    width: 100%;
+    height: 250px;
+    background-image: url("../img/etryrew_TP_V.jpg");
+    color: #000000;
+    background-color: #f8dce0;
+    margin: 0 auto;
+    padding: 0;
+    clear: both;
+  }
+}
+
+// PC
+@media (min-width: 769px) {
+  header {
+    .header-picture {
+      height: 500px;
+    }
+  }
+}
+
+/* Contents
+------------------------------------------------------------*/
+// Common Styles
+section {
+  padding: 60px 0;
+  .container {
+    width: 90%;
+    @extend .block-center;
+  }
+  h2 {
+    @extend .abel;
+    font-size: 3.2rem;
+    @extend .uppercase;
+  }
+}
+
+// MainContents
+#MainContents {
+  background-color: $baseColor;
+  .container {
+    @include display-flex;
+    justify-content: space-between;
+    @include flex-direction(column);    // スキルボックスを縦に並べる
+  }
+  h2 {
+    color: $fontColor;
+    padding: 10px;
+  }
+  .contents-box {
+    @include flex(1);
+    @extend .abel;
+    @extend .uppercase;
+    margin: 1px 0;                     // 上下にマージン
+    padding: 10px;
+    background-color: $baseColor;
+    @include border-radius(4px);
+    @include box-sizing(border-box);
+  }
+  .box-title {
+    background-color:$keyColor;
+    color: $fontColor;
+    margin-bottom: 0;
+    font-size: 2.4rem;
+    font-weight: bold;
+  }
+  .box-contents {
+    background-color:$subColor;
+    color: $fontColor;
+    margin: 0;
+    font-size: 1.5rem;
+  }
+}
+
+// PC
+@media (min-width: 769px) {
+  #MainContents 
+    .container {
+      @include flex-direction(row);    // スキルボックスを横に並べる
+      justify-content: space-between;
+      }
+    .contents-box {
+      margin: 1px 0;                     // 上下にマージン
+      padding: 10px;
+      }
+    .box-contents {
+      min-height: 120px;
+    }
+}
+
+  
+// FooterContents
+#FooterContents {
+  background-color: $baseColor2;
+  h3 {
+    color: $fontColor;
+    padding: 10px;
+  }
+  .conversionButton {
+    max-width: 200px;
+    padding: 2px;
+    background-color: $keyColor;
+    font-size: 1.8rem;
+    font-weight: bold;
+    @include border-radius(5px);
+    @extend .block-center;
+  }
+}
+
+// PC
+@media (min-width: 769px) {
+  #FooterContents {
+    a {
+      .conversionButton {
+        &:hover, &:active {
+          background-color: darken($keyColor, 10%);
+          color: #FFF;
+        }
+      }
+    }
+  }
+}
+  
+  
